@@ -1,13 +1,7 @@
 # My Portfolio
 
 ## Overview
-This is my personal portfolio website built using React, Vite, and Tailwind CSS. It showcases my skills, projects, and contact information in a responsive, modern design.
-
-## Project Structure
-project/
-├─ public/       # Static assets
-├─ src/          # React components, pages, and styles
-├─ Backup before pull # Backup folder before latest pull
+This is my personal portfolio website built using React, Vite, and Tailwind CSS. It showcases my skills, projects, and contact information in a responsive, modern design
 
 ## Features
 - Home page with introduction
