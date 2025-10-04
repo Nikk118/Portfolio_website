@@ -1,76 +1,47 @@
-My Portfolio
-Overview
+# My Portfolio
 
-This is my personal portfolio website built using React, Vite, and Tailwind CSS.
-It showcases my skills, projects, and contact information in a responsive, modern design.
+## Overview
+This is my personal portfolio website built using React, Vite, and Tailwind CSS. It showcases my skills, projects, and contact information in a responsive, modern design.
 
-Project Structure
+## Project Structure
 project/
 ├─ public/       # Static assets
 ├─ src/          # React components, pages, and styles
 ├─ Backup before pull # Backup folder before latest pull
 
-Features
+## Features
+- Home page with introduction
+- About section with skills and education
+- Projects showcase
+- Contact form
+- Responsive design for all devices
 
-Home page with introduction
+## Technologies Used
+- React
+- Vite
+- Tailwind CSS
+- Framer Motion (for animations)
 
-About section with skills and education
-
-Projects showcase
-
-Contact form
-
-Responsive design for all devices
-
-Technologies Used
-
-React
-
-Vite
-
-Tailwind CSS
-
-Framer Motion (for animations)
-
-Installation
-
+## Installation
 Clone the repository:
-
 git clone https://github.com/Nikk118/Portfolio_website.git
 cd Portfolio_website
 
-
 Install dependencies:
-
 npm install
 
-
 Run the development server:
-
 npm run dev
 
-
 Build for production:
-
 npm run build
-
-
 Production files will be in the dist/ folder.
 
-Deployment
-
+## Deployment
 The site can be deployed on static hosting services like:
+-render
 
-Netlify
-
-Vercel
-
-GitHub Pages
-
-Contact
-
-Email: nikhilyagik2004@gmail.com
-
-LinkedIn:Nikhil Yagik
-
-GitHub:Nikk118
+## Contact
+- Email: nikhilyagik2004@gmail.com
+- LinkedIn: Nikhil Yagik
+- GitHub: Nikk118
