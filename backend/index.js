@@ -44,7 +44,7 @@ app.post('/api/contact', async (req, res) => {
     res.status(500).json({ message: 'Failed to send message' });
   }
 });
-
+if(process.env.NODE_ENV === "production"){
 
     app.use(express.static(path.join(__dirname, "../frontend/dist")));
   
@@ -52,7 +52,14 @@ app.post('/api/contact', async (req, res) => {
       res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
     });
     
+  }else{
+     app.use(express.static(path.join(__dirname, "../frontend/dist")));
   
+    app.get(/(.*)/, (req, res) => {
+      res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+    });
+    console.log("shit")
+  }
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

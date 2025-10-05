@@ -15,8 +15,11 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const API_URL =import.meta.env.MODE === 'development'
+    ? 'http://localhost:5000/'
+    : '/';
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {  // backend endpoint
+      const response = await fetch(`${API_URL}/contact`, { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -56,7 +59,7 @@ const Contact = () => {
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Contact Info */}
+           
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
