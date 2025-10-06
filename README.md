@@ -33,7 +33,9 @@ Production files will be in the dist/ folder.
 
 ## Deployment
 The site can be deployed on static hosting services like:
--render
+- [Netlify](https://nikhil-yagik.netlify.app/)
+- [Vercel](https://vercel.com/nikhils-projects-b7c5d659/portfolio-website)
+
 
 ## Contact
 - Email: nikhilyagik2004@gmail.com
