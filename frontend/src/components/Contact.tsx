@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, Github, Linkedin, Send } from 'lucide-react';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser'; 
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,20 +15,24 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const base_url = import.meta.env.MODE==="development"?"http://localhost:5000/api":"/api"
-    try {
-      const response = await fetch(`${base_url}/contact`, {  
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    setSubmitStatus('idle');
 
-      if (!response.ok) throw new Error('Failed to send message');
+    try {
+      await emailjs.send(
+        'service_krp7a0h',   
+        'template_qp7btg9',   
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        'PICry6yXnyFlIF9yK'     
+      );
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {
-      console.error(err);
+      console.error('EmailJS error:', err);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
