@@ -22,8 +22,8 @@ const Contact = () => {
         'service_krp7a0h',   
         'template_qp7btg9',   
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          name: formData.name,
+          email: formData.email,
           message: formData.message,
         },
         'PICry6yXnyFlIF9yK'     
