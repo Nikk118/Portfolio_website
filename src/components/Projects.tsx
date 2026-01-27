@@ -3,36 +3,68 @@ import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
   {
-    title: 'TalkNest',
-    subtitle: 'Chat App',
-    year: '2024',
-    description: 'Real-time chat application with instant messaging capabilities. Built with Socket.IO for real-time communication, featuring user authentication, message history, and responsive design.',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.IO', 'Tailwind CSS'],
-    liveDemo: 'https://chatapp-xn9n.onrender.com',
-    github: 'https://github.com/Nikk118/chatApp',
-    image: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    title: 'Time Capsule',
-    subtitle: 'Web App',
-    year: '2024',
-    description: 'Future email delivery application that allows users to schedule emails to be sent at a later date. Integrated Nodemailer for automated email delivery with user-friendly scheduling interface.',
-    tech: ['React', 'Node.js', 'MongoDB', 'REST APIs', 'Nodemailer'],
-    liveDemo: 'https://timecapsule-upg3.onrender.com',
-    github: 'https://github.com/Nikk118/TimeCapsule',
-    image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
+    title: 'Selura (Freelance)',
+    subtitle: 'E-commerce Platform',
+    year: '2025',
+    description:
+      'Full-stack e-commerce platform developed as a freelance project. Includes secure authentication, product management, cart and checkout flow, address handling, and Razorpay payment integration with a modern responsive UI.',
+    tech: [
+      'React',
+      'Vite',
+      'Tailwind CSS',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'JWT',
+      'Razorpay',
+    ],
+    liveDemo: 'https://seluraofficial.in/',
+    github: 'Private repository (Client project)',
+    image:
+      'selura.png',
   },
   {
     title: 'Servielliance',
     subtitle: 'UrbanClap Clone',
     year: '2025',
-    description: 'Full-stack service marketplace platform connecting service providers with customers. Features include booking management, JWT authentication, image uploads via Cloudinary, email notifications, and cancellation system.',
-    tech: ['React', 'Vite', 'Tailwind', 'Zustand', 'JWT', 'Cloudinary', 'Multer', 'Nodemailer'],
+    description:
+      'Service marketplace platform enabling users to book professionals in real time. Implemented role-based access, booking lifecycle management, notifications, and image uploads with a scalable backend architecture.',
+    tech: [
+      'React',
+      'Vite',
+      'Tailwind',
+      'Zustand',
+      'JWT',
+      'Cloudinary',
+      'Multer',
+      'Nodemailer',
+    ],
     liveDemo: 'https://servielliance.onrender.com',
     github: 'https://github.com/Nikk118/Servilanc',
-    image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image:
+      'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
+  },
+  {
+    title: 'TalkNest',
+    subtitle: 'Chat App',
+    year: '2024',
+    description:
+      'Real-time chat application supporting instant messaging and user authentication. Built using Socket.IO with message persistence and a responsive UI optimized for smooth real-time interactions.',
+    tech: [
+      'React',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'Socket.IO',
+      'Tailwind CSS',
+    ],
+    liveDemo: 'https://chatapp-xn9n.onrender.com',
+    github: 'https://github.com/Nikk118/chatApp',
+    image:
+      'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
+
 
 const Projects = () => {
   return (
@@ -105,15 +137,20 @@ const Projects = () => {
                         <ExternalLink className="w-4 h-4" />
                         Live Demo
                       </motion.a>
-                      <motion.a
-                        href={project.github}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors border-2 border-slate-200"
-                      >
-                        <Github className="w-4 h-4" />
-                        GitHub
-                      </motion.a>
+                      {project.github?.startsWith('http') && (
+  <motion.a
+    href={project.github}
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors border-2 border-slate-200"
+  >
+    <Github className="w-4 h-4" />
+    GitHub
+  </motion.a>
+)}
+
                     </div>
                   </div>
                 </div>
