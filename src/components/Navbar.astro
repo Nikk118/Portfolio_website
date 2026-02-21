@@ -1,0 +1,130 @@
+﻿---
+const navItems = [
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Skills", id: "skills" },
+  { label: "Projects", id: "projects" },
+  { label: "Contact", id: "contact" },
+];
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+>
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    
+    <!-- Logo -->
+    <button
+      id="logo-btn"
+      class="text-2xl font-bold text-slate-900"
+    >
+      NY
+    </button>
+
+    <!-- Desktop menu -->
+    <div class="hidden md:flex items-center gap-8">
+      {navItems.map((item) => (
+        <button
+          class="nav-btn text-slate-700 hover:text-slate-900 font-medium transition-colors"
+          data-id={item.id}
+        >
+          {item.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Mobile toggle -->
+    <button
+      id="menu-toggle"
+      class="md:hidden text-slate-900 text-2xl"
+    >
+      ☰
+    </button>
+
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden fixed top-[64px] left-0 right-0 bg-white border-t border-slate-200 z-50 hidden"
+  >
+    <div class="px-4 py-4 space-y-3">
+      {navItems.map((item) => (
+        <button
+          class="mobile-btn block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-50 rounded-lg transition-colors"
+          data-id={item.id}
+        >
+          {item.label}
+        </button>
+      ))}
+    </div>
+  </div>
+</nav>
+<script>
+  const navbar = document.getElementById("navbar") as HTMLElement | null;
+  const toggle = document.getElementById("menu-toggle") as HTMLElement | null;
+  const mobileMenu = document.getElementById("mobile-menu") as HTMLElement | null;
+  const logoBtn = document.getElementById("logo-btn") as HTMLElement | null;
+
+  let isMobileMenuOpen: boolean = false;
+
+  const handleScroll = (): void => {
+    if (!navbar) return;
+
+    if (window.scrollY > 50) {
+      navbar.classList.add("bg-white", "shadow-lg");
+      navbar.classList.remove("bg-transparent");
+    } else {
+      navbar.classList.remove("bg-white", "shadow-lg");
+      navbar.classList.add("bg-transparent");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  const scrollToSection = (id: string): void => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    closeMenu();
+  };
+
+  const openMenu = (): void => {
+    if (!mobileMenu || !toggle) return;
+
+    mobileMenu.classList.remove("hidden");
+    toggle.textContent = "✖";
+    document.body.style.overflow = "hidden";
+    isMobileMenuOpen = true;
+  };
+
+  const closeMenu = (): void => {
+    if (!mobileMenu || !toggle) return;
+
+    mobileMenu.classList.add("hidden");
+    toggle.textContent = "☰";
+    document.body.style.overflow = "auto";
+    isMobileMenuOpen = false;
+  };
+
+  toggle?.addEventListener("click", () => {
+    isMobileMenuOpen ? closeMenu() : openMenu();
+  });
+
+  logoBtn?.addEventListener("click", () => scrollToSection("home"));
+
+  document.querySelectorAll(".nav-btn").forEach((btn) => {
+    btn.addEventListener("click", () =>
+      scrollToSection((btn as HTMLElement).dataset.id!)
+    );
+  });
+
+  document.querySelectorAll(".mobile-btn").forEach((btn) => {
+    btn.addEventListener("click", () =>
+      scrollToSection((btn as HTMLElement).dataset.id!)
+    );
+  });
+
+</script>

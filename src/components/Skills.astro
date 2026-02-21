@@ -1,0 +1,106 @@
+﻿---
+const coreTechSkills = [
+  "React.js",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "SQL",
+  "Tailwind CSS",
+  "HTML",
+  "CSS",
+  "Bootstrap",
+  "Git",
+  "GitHub",
+  "Postman",
+  "VS Code",
+  "JavaScript",
+  "TypeScript",
+  "Python",
+  "Java",
+  "C++",
+  "JWT",
+  "Cloudinary",
+];
+
+const aiMlSkills = [
+  "Machine Learning",
+  "Deep Learning",
+  "Natural Language Processing (NLP)",
+  "Transformers",
+  "Computer Vision",
+  "Embeddings",
+  "Vector Databases",
+  "Semantic Search",
+  "Hugging Face",
+  "FAISS",
+  "OpenCV",
+  "MediaPipe",
+  "Python (AI)",
+];
+
+const conceptSkills = [
+  "OOP",
+  "Data Structures and Algorithms",
+  "REST API Design",
+  "Authentication and Authorization",
+  "Scalable Architecture",
+  "Responsive UI Systems",
+  "Debugging and Testing Mindset",
+  "Agile Workflow",
+  "Clean Code Practices",
+  "Problem Solving",
+];
+---
+
+<section id="skills" class="py-50 px-4 bg-gradient-to-br from-slate-50 via-white to-slate-100">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-xs font-semibold tracking-[0.25em] text-slate-500 uppercase mb-3">My Stack</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Tech Skills</h2>
+      <p class="text-slate-600 max-w-3xl mx-auto">
+        A practical toolkit for building production-ready web products and AI-powered experiences.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+      <article class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xs font-bold">WEB</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">Core Tech</h3>
+            <p class="text-slate-500 text-sm">Frontend, backend, tools</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {coreTechSkills.map((skill) => <span class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-800 text-sm font-medium border border-slate-200">{skill}</span>)}
+        </div>
+      </article>
+
+      <article class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">AI</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">AI and ML Toolkit</h3>
+            <p class="text-slate-500 text-sm">Models, vision, retrieval</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {aiMlSkills.map((skill) => <span class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 text-sm font-medium border border-emerald-200">{skill}</span>)}
+        </div>
+      </article>
+
+      <article class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs font-bold">SYS</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">Concepts and Practices</h3>
+            <p class="text-slate-500 text-sm">Engineering thinking</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {conceptSkills.map((skill) => <span class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-800 text-sm font-medium border border-indigo-200">{skill}</span>)}
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

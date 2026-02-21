@@ -1,0 +1,15 @@
+﻿<footer class="bg-slate-900 text-white py-8 px-4">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="text-slate-300">
+      Built by Nikhil Yagik
+    </p>
+    <p class="text-slate-400 text-sm mt-2">
+      <span id="footer-year"></span> All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script>
+  const year = document.getElementById("footer-year");
+  if (year) year.textContent = String(new Date().getFullYear());
+</script>

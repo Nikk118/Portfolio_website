@@ -1,40 +1,47 @@
 # My Portfolio
 
 ## Overview
-This is my personal portfolio website built using React, Vite, and Tailwind CSS. It showcases my skills, projects, and contact information in a responsive, modern design
+This is my personal portfolio website built using Astro and Tailwind CSS. It showcases my skills, projects, and contact information in a responsive, modern design.
 
 ## Features
 - Home page with introduction
-- About section with skills and education
+- About section with education and summary
+- Skills showcase
 - Projects showcase
 - Contact form
 - Responsive design for all devices
 
 ## Technologies Used
-- React
-- Vite
+- Astro
 - Tailwind CSS
-- Framer Motion (for animations)
+- EmailJS (contact form submission)
 
 ## Installation
 Clone the repository:
+```bash
 git clone https://github.com/Nikk118/Portfolio_website.git
 cd Portfolio_website
+```
 
 Install dependencies:
+```bash
 npm install
+```
 
 Run the development server:
+```bash
 npm run dev
+```
 
 Build for production:
+```bash
 npm run build
-Production files will be in the dist/ folder.
+```
 
-## Deployment
-The site can be deployed on static hosting services like:
-- [Vercel](https://portfolio-website-five-brown.vercel.app/)
-
+Preview production build:
+```bash
+npm run preview
+```
 
 ## Contact
 - Email: nikhilyagik2004@gmail.com

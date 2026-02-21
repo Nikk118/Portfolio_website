@@ -1,13 +1,17 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
   }
 
   body {
     @apply antialiased;
+    margin: 0;
+    padding: 0;
   }
 }
