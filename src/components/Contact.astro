@@ -113,44 +113,51 @@
   const submitButton = document.getElementById("contact-submit");
   const status = document.getElementById("contact-status");
 
-  const updateStatus = (message:any, state:any) => {
+  emailjs.init("PICry6yXnyFlIF9yK");
+
+  const updateStatus = (message, state) => {
     if (!status) return;
     status.textContent = message;
     status.classList.remove("hidden", "text-red-600", "text-green-600");
     status.classList.add(state === "success" ? "text-green-600" : "text-red-600");
   };
 
+  if (!(form instanceof HTMLFormElement)) {
+    console.error("Contact form not found");
+  }
+
+  if (!(submitButton instanceof HTMLButtonElement)) {
+    console.error("Contact submit button not found");
+  }
+
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (!(form instanceof HTMLFormElement)) return;
 
-    const formData = new FormData(form);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
+    if (!(form instanceof HTMLFormElement) || !(submitButton instanceof HTMLButtonElement)) {
+      updateStatus("Contact form is not ready. Please refresh and try again.", "error");
+      return;
+    }
 
-    submitButton?.setAttribute("disabled", "true");
-    if (submitButton) submitButton.textContent = "Sending...";
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
 
     try {
-      await emailjs.send(
+      await emailjs.sendForm(
         "service_krp7a0h",
         "template_qp7btg9",
-        { name, email, message },
-        "PICry6yXnyFlIF9yK"
+        form
       );
 
       updateStatus("Message sent successfully!", "success");
       form.reset();
     } catch (error) {
-      console.error("EmailJS error:", error);
-      updateStatus("Failed to send message. Try again.", "error");
+      console.error(error);
+      updateStatus("Failed to send message", "error");
     } finally {
-      submitButton?.removeAttribute("disabled");
-      if (submitButton) submitButton.textContent = "Send Message";
-      setTimeout(() => {
-        status?.classList.add("hidden");
-      }, 3000);
+      submitButton.disabled = false;
+      submitButton.textContent = "Send Message";
     }
   });
 </script>
+
+

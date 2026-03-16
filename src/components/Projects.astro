@@ -1,4 +1,4 @@
----
+﻿---
 import { Image } from "astro:assets";
 import seluraImage from "../assets/selura.png";
 import serviellianceImage from "../assets/image.png";
@@ -38,7 +38,70 @@ const projects = [
     github: "https://github.com/Nikk118/chatApp",
     image: talknestImage,
   },
+  {
+    title: "GPT Language Model from Scratch",
+    subtitle: "AI/ML",
+    year: "2025",
+    description:
+      "Built a 6-layer Transformer-based GPT model from scratch using PyTorch. Implemented multi-head masked self-attention, positional encoding, layer normalization, and feed-forward blocks. Trained on TinyShakespeare dataset (1.1M+ sequences) for next-token prediction and achieved final perplexity of 2.41 with temperature + top-k sampling.",
+    tech: ["PyTorch", "CUDA", "AMP", "Transformer Architecture"],
+    github: "https://github.com/Nikk118/gpt-from-scratch-pytorch",
+    
+  },
+  {
+    title: "Pneumonia Detection using CNN",
+    subtitle: "Medical Imaging",
+    year: "2025",
+    description:
+      "Built a CNN for binary classification of 5,800+ chest X-ray images. Handled severe class imbalance using class weighting. Achieved 90%+ test accuracy and improved recall from 0.90 to 0.96 via threshold tuning, then evaluated with confusion matrix for medical-risk aware optimization.",
+    tech: ["TensorFlow", "Keras", "OpenCV", "Data Augmentation"],
+    github: "https://github.com/Nikk118/pneumonia-detection",
+    
+  },
+  {
+    title: "Local RAG-based PDF Assistant",
+    subtitle: "CLI Tool",
+    year: "2025",
+    description:
+      "Built a fully local Retrieval-Augmented Generation (RAG) system for PDF Q&A. Generated embeddings using MiniLM and stored vectors in FAISS. Implemented chunking with overlap and top-k semantic retrieval, then integrated TinyLlama for context-aware answer generation with a CLI interface.",
+    tech: ["Python", "Sentence-Transformers", "FAISS", "Transformers"],
+    github: "https://github.com/Nikk118/pdf-rag-system",
+  },
 ];
+
+const webProjectTitles = ["Selura (Freelance)", "Servielliance", "TalkNest"];
+const webProjects = projects.filter((project) => webProjectTitles.includes(project.title));
+const aiMlProjects = projects.filter((project) => !webProjectTitles.includes(project.title));
+
+const aiMlMeta = {
+  "GPT Language Model from Scratch": {
+    icon: "🤖",
+    iconBg: "bg-emerald-100 text-emerald-700",
+    stats: [
+      { value: "2.41", label: "Perplexity" },
+      { value: "1.1M+", label: "Sequences" },
+      { value: "6", label: "Layers" },
+    ],
+  },
+  "Pneumonia Detection using CNN": {
+    icon: "🔬",
+    iconBg: "bg-rose-100 text-rose-700",
+    stats: [
+      { value: "90%+", label: "Accuracy" },
+      { value: "5,800+", label: "Images" },
+      { value: "0.96", label: "Recall" },
+    ],
+  },
+  "Local RAG-based PDF Assistant": {
+    icon: "💬",
+    iconBg: "bg-sky-100 text-sky-700",
+    stats: [
+      { value: "100%", label: "Local" },
+      { value: "FAISS", label: "Vector Store" },
+      { value: "top-k", label: "Retrieval" },
+    ],
+  },
+};
 ---
 
 <section id="projects" class="py-20 px-4 bg-white">
@@ -46,66 +109,201 @@ const projects = [
     <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 text-center">
       Featured Projects
     </h2>
-    <p class="text-slate-600 text-center mb-12 max-w-2xl mx-auto">
-      A selection of projects showcasing my skills in full-stack development
+    <p class="text-slate-600 text-center mb-10 max-w-2xl mx-auto">
+      Full-stack web apps and AI/ML systems built from scratch
     </p>
 
-    <div class="grid md:grid-cols-1 gap-8">
-      {
-        projects.map((project) => (
-          <article class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-            <div class="grid md:grid-cols-2 gap-0">
-              <div class="relative h-64 md:h-full overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
-                  widths={[480, 768, 1200]}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
+    <div class="flex justify-center mb-10">
+      <div class="inline-flex items-center gap-2 p-1 bg-slate-100 rounded-full" role="tablist" aria-label="Project categories">
+        <button
+          id="tab-web"
+          type="button"
+          role="tab"
+          aria-label="Show web development projects"
+          aria-selected="true"
+          aria-controls="panel-web"
+          data-project-tab="web"
+          class="project-tab-btn px-5 py-2 rounded-full text-sm font-medium transition-colors bg-slate-900 text-white"
+        >
+          Web Projects
+        </button>
+        <button
+          id="tab-ai"
+          type="button"
+          role="tab"
+          aria-label="Show AI and machine learning projects"
+          aria-selected="false"
+          aria-controls="panel-ai"
+          data-project-tab="ai"
+          class="project-tab-btn px-5 py-2 rounded-full text-sm font-medium transition-colors bg-white text-slate-700 border border-slate-200"
+        >
+          AI/ML Projects
+        </button>
+      </div>
+    </div>
 
-              <div class="p-8 flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-3xl font-bold text-slate-900">{project.title}</h3>
-                    <span class="text-slate-500 text-sm">{project.year}</span>
-                  </div>
-                  <p class="text-slate-600 font-medium mb-4">{project.subtitle}</p>
-                  <p class="text-slate-700 mb-6 leading-relaxed">{project.description}</p>
-
-                  <div class="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech) => <span class="px-3 py-1 bg-white text-slate-700 rounded-full text-sm font-medium shadow-sm">{tech}</span>)}
-                  </div>
+    <div id="panel-web" role="tabpanel" aria-labelledby="tab-web" class="project-panel opacity-100 transition-opacity duration-300">
+      <div class="grid md:grid-cols-1 gap-8">
+        {
+          webProjects.map((project) => (
+            <article class="bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+              <div class="grid md:grid-cols-2 gap-0">
+                <div class="relative h-64 md:h-full overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                    widths={[480, 768, 1200]}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
 
-                <div class="flex gap-4">
-                  <a
-                    href={project.liveDemo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors"
-                  >
-                    Live Demo
-                  </a>
+                <div class="p-8 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-3xl font-bold text-slate-900">{project.title}</h3>
+                      <span class="text-slate-500 text-sm">{project.year}</span>
+                    </div>
+                    <p class="text-slate-600 font-medium mb-4">{project.subtitle}</p>
+                    <p class="text-slate-700 mb-6 leading-relaxed">{project.description}</p>
 
-                  {project.github.startsWith("http") && (
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      {project.tech.map((tech) => <span class="px-3 py-1 bg-white text-slate-700 rounded-full text-sm font-medium shadow-sm">{tech}</span>)}
+                    </div>
+                  </div>
+
+                  <div class="flex gap-4">
                     <a
-                      href={project.github}
+                      href={project.liveDemo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors border-2 border-slate-200"
+                      class="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors"
                     >
-                      GitHub
+                      Live Demo
                     </a>
-                  )}
+
+                    {project.github.startsWith("http") && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors border-2 border-slate-200"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
-        ))
-      }
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <div id="panel-ai" role="tabpanel" aria-labelledby="tab-ai" hidden class="project-panel opacity-0 transition-opacity duration-300">
+      <div class="grid md:grid-cols-1 gap-8">
+        {
+          aiMlProjects.map((project) => {
+            const meta = aiMlMeta[project.title] ?? { icon: "??", iconBg: "bg-slate-200 text-slate-700", stats: [] };
+
+            return (
+              <article class="bg-slate-50 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+                <div class="flex items-start justify-between gap-4 mb-4">
+                  <div class="flex items-center gap-4 min-w-0">
+                    <div class={`w-12 h-12 rounded-xl flex items-center justify-center text-xl ${meta.iconBg}`} aria-hidden="true">
+                      {meta.icon}
+                    </div>
+                    <div>
+                      <h3 class="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">{project.title}</h3>
+                    </div>
+                  </div>
+                  <span class="text-slate-500 text-sm shrink-0">{project.year}</span>
+                </div>
+
+                <p class="text-slate-600 font-medium mb-3">{project.subtitle}</p>
+                <p class="text-slate-700 leading-relaxed mb-6">{project.description}</p>
+
+                <div class="flex flex-wrap justify-start gap-3 mb-6">
+                  {meta.stats.map((stat:any) => (
+                    <div class="w-auto bg-white border border-slate-200 rounded-xl px-5 py-3 text-center">
+                      <p class="text-2xl font-bold text-slate-900 leading-none">{stat.value}</p>
+                      <p class="text-xs text-slate-500 mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {project.tech.map((tech) => <span class="px-3 py-1 bg-white text-slate-700 rounded-full text-sm font-medium shadow-sm">{tech}</span>)}
+                </div>
+
+                {project.github.startsWith("http") && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors border-2 border-slate-200"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </article>
+            );
+          })
+        }
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  const tabButtons = Array.from(document.querySelectorAll(".project-tab-btn"));
+  const panels = {
+    web: document.getElementById("panel-web"),
+    ai: document.getElementById("panel-ai"),
+  };
+
+  let activeTab = "web";
+
+  const setTabState = (tab) => {
+    if (tab === activeTab) return;
+
+    tabButtons.forEach((button) => {
+      const isActive = button.dataset.projectTab === tab;
+      button.setAttribute("aria-selected", isActive ? "true" : "false");
+      button.classList.toggle("bg-slate-900", isActive);
+      button.classList.toggle("text-white", isActive);
+      button.classList.toggle("bg-white", !isActive);
+      button.classList.toggle("text-slate-700", !isActive);
+      button.classList.toggle("border", !isActive);
+      button.classList.toggle("border-slate-200", !isActive);
+    });
+
+    const outgoingPanel = panels[activeTab];
+    const incomingPanel = panels[tab];
+
+    if (!outgoingPanel || !incomingPanel) return;
+
+    outgoingPanel.classList.remove("opacity-100");
+    outgoingPanel.classList.add("opacity-0");
+
+    setTimeout(() => {
+      outgoingPanel.hidden = true;
+      incomingPanel.hidden = false;
+      incomingPanel.classList.remove("opacity-0");
+      incomingPanel.classList.add("opacity-100");
+    }, 180);
+
+    activeTab = tab;
+  };
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetTab = button.dataset.projectTab;
+      if (targetTab === "web" || targetTab === "ai") {
+        setTabState(targetTab);
+      }
+    });
+  });
+</script>

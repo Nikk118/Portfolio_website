@@ -1,4 +1,4 @@
----
+﻿---
 import "../index.css";
 
 interface Props {
@@ -10,8 +10,8 @@ interface Props {
 
 const {
   title = "Nikhil Yagik | Full-Stack Developer & AI/ML Engineer",
-  description = "Portfolio of Nikhil Yagik, a Full-Stack Developer and AI/ML Engineer building modern web apps and practical AI systems.",
-  image = "/logo.png",
+  description = "Portfolio of Nikhil Yagik, a Full-Stack MERN Developer and AI/ML Engineer from Gujarat, India. Building modern web apps and practical AI systems.",
+  image = "/logo.webp",
   noindex = false
 } = Astro.props;
 
@@ -26,6 +26,21 @@ const personSchema = {
   jobTitle: "Full-Stack Developer and AI/ML Engineer",
   url: canonical ?? undefined,
   email: "mailto:nikhilyagik2004@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Umbergaon",
+    addressRegion: "Gujarat",
+    addressCountry: "IN"
+  },
+  knowsAbout: ["React", "Node.js", "MongoDB", "Express", "Python", "PyTorch", "TensorFlow", "HuggingFace", "FAISS", "MERN Stack", "AI/ML", "Transformer Architecture", "CNN", "RAG Pipelines", "Deep Learning", "Natural Language Processing", "Computer Vision", "Medical Imaging", "TinyLlama", "Sentence Transformers"],
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      recognizedBy: { "@type": "Organization", name: "Indus University" },
+      name: "Master of Computer Applications (MCA)"
+    }
+  ],
   sameAs: [
     "https://github.com/Nikk118",
     "https://linkedin.com/in/nikhilyagik"
@@ -36,27 +51,51 @@ const personSchema = {
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Charset must be first -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fonts (preconnect before stylesheet) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Geist:wght@100..900&display=swap" />
+
+    <link rel="icon" type="image/webp" href="/logo.webp" />
+    <link rel="apple-touch-icon" href="/logo.webp" />
+
+    <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="Nikhil Yagik, Full Stack Developer, MERN Developer, AI ML Engineer, React Developer India, Node.js Developer Gujarat, Python Developer, Web Developer Umbergaon, PyTorch Developer, GPT from Scratch, Transformer Model PyTorch, CNN Medical Imaging TensorFlow, Pneumonia Detection Deep Learning, RAG System FAISS Python, HuggingFace Developer India, Deep Learning Engineer Gujarat, MCA Student Developer India, Local RAG PDF Assistant, TinyLlama, Sentence Transformers, AI ML Engineer India, Computer Vision OpenCV" />
+    <meta name="author" content="Nikhil Yagik" />
     <meta name="robots" content={robots} />
+    <meta name="theme-color" content="#000000" />
     {canonical && <link rel="canonical" href={canonical} />}
 
+    <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {canonical && <meta property="og:url" content={canonical} />}
     <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Nikhil Yagik Portfolio" />
+    <meta property="og:locale" content="en_IN" />
 
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:creator" content="@nikhilyagik" />
 
+    <!-- JSON-LD Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body class="antialiased">
     <slot />
   </body>
 </html>
+
+
+
+
