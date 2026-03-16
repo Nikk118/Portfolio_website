@@ -7,168 +7,53 @@ import MainLayout from "../layouts/MainLayout.astro";
   description="The page you are looking for does not exist."
   noindex={true}
 >
-  <section class="not-found-wrap">
-    <div class="noise"></div>
-    <div class="orb orb-a"></div>
-    <div class="orb orb-b"></div>
-    <div class="card">
-      <p class="tag">ERROR 404</p>
-      <h1>Page Not Found</h1>
-      <p class="copy">
-        This link drifted into another timeline. Let us get you back to the portfolio.
+  <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 px-4">
+    <div class="max-w-4xl mx-auto text-center animate-in">
+      <p class="text-slate-600 text-sm mb-4">Error 404</p>
+      <h1 class="text-5xl md:text-7xl font-bold text-slate-900 mb-6">Page Not Found</h1>
+      <p class="text-xl md:text-2xl text-slate-700 mb-10 max-w-3xl mx-auto leading-relaxed">
+        The page you requested does not exist or has been moved.
       </p>
-      <div class="actions">
-        <a href="/" class="btn btn-solid">Go Home</a>
-        <a href="/#projects" class="btn btn-ghost">View Projects</a>
+
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/"
+          class="px-8 py-4 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg"
+        >
+          Go Home
+        </a>
+
+        <a
+          href="/#projects"
+          class="px-8 py-4 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-50 transition-all hover:scale-105 active:scale-95 shadow-lg border-2 border-slate-200"
+        >
+          View Projects
+        </a>
+
+        <a
+          href="/#contact"
+          class="px-8 py-4 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-50 transition-all hover:scale-105 active:scale-95 shadow-lg border-2 border-slate-200"
+        >
+          Contact Me
+        </a>
       </div>
     </div>
   </section>
 </MainLayout>
 
 <style>
-  .not-found-wrap {
-    position: relative;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    padding: 24px;
-    background:
-      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12), transparent 42%),
-      radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.1), transparent 35%),
-      radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.08), transparent 40%),
-      #111827;
+  .animate-in {
+    animation: fade-up 0.6s ease-out;
   }
 
-  .noise {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(
-      rgba(255, 255, 255, 0.05) 50%,
-      rgba(0, 0, 0, 0.05) 50%
-    );
-    background-size: 100% 4px;
-    mix-blend-mode: soft-light;
-    animation: flicker 0.2s steps(2) infinite;
-    pointer-events: none;
-  }
-
-  .orb {
-    position: absolute;
-    border-radius: 9999px;
-    filter: blur(28px);
-    opacity: 0.8;
-    animation: drift 10s ease-in-out infinite alternate;
-  }
-
-  .orb-a {
-    width: 220px;
-    height: 220px;
-    background: #e5e7eb;
-    top: 10%;
-    left: 8%;
-  }
-
-  .orb-b {
-    width: 280px;
-    height: 280px;
-    background: #6b7280;
-    bottom: 4%;
-    right: 6%;
-    animation-duration: 13s;
-  }
-
-  .card {
-    position: relative;
-    width: min(640px, 100%);
-    padding: 34px;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: rgba(17, 24, 39, 0.78);
-    backdrop-filter: blur(8px);
-    color: #f3f4f6;
-    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45);
-    animation: pop 0.5s ease-out;
-  }
-
-  .tag {
-    display: inline-block;
-    margin: 0 0 12px;
-    padding: 6px 12px;
-    border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    letter-spacing: 0.08em;
-    font-size: 12px;
-    font-weight: 700;
-    color: #d1d5db;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: clamp(30px, 7vw, 62px);
-    line-height: 1;
-    text-transform: uppercase;
-    animation: glitch 3s infinite;
-  }
-
-  .copy {
-    margin: 14px 0 0;
-    color: rgba(229, 231, 235, 0.9);
-    font-size: 17px;
-  }
-
-  .actions {
-    margin-top: 26px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 12px;
-    padding: 12px 16px;
-    transition: transform 0.2s ease, filter 0.2s ease;
-  }
-
-  .btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.05);
-  }
-
-  .btn-solid {
-    background: #e5e7eb;
-    color: #111827;
-  }
-
-  .btn-ghost {
-    color: #f3f4f6;
-    border: 1px solid rgba(229, 231, 235, 0.45);
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  @keyframes drift {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(32px, -18px) scale(1.08); }
-  }
-
-  @keyframes flicker {
-    0% { opacity: 0.25; }
-    100% { opacity: 0.45; }
-  }
-
-  @keyframes pop {
-    from { opacity: 0; transform: translateY(14px) scale(0.98); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-
-  @keyframes glitch {
-    0%, 88%, 100% { text-shadow: none; transform: translate(0); }
-    89% { text-shadow: -2px 0 #ffffff, 2px 0 #6b7280; transform: translate(-1px, 0); }
-    90% { text-shadow: 2px 0 #ffffff, -2px 0 #6b7280; transform: translate(1px, 0); }
-    91% { text-shadow: -1px 0 #ffffff, 1px 0 #6b7280; transform: translate(0, 0); }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
-
