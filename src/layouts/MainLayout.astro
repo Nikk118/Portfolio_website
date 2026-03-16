@@ -1,5 +1,36 @@
-﻿---
+---
 import "../index.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Nikhil Yagik | Full-Stack Developer & AI/ML Engineer",
+  description = "Portfolio of Nikhil Yagik, a Full-Stack Developer and AI/ML Engineer building modern web apps and practical AI systems.",
+  image = "/logo.png",
+  noindex = false
+} = Astro.props;
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+const ogImage = Astro.site ? new URL(image, Astro.site).toString() : image;
+const robots = noindex ? "noindex, nofollow" : "index, follow";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Nikhil Yagik",
+  jobTitle: "Full-Stack Developer and AI/ML Engineer",
+  url: canonical ?? undefined,
+  email: "mailto:nikhilyagik2004@gmail.com",
+  sameAs: [
+    "https://github.com/Nikk118",
+    "https://linkedin.com/in/nikhilyagik"
+  ]
+};
 ---
 
 <!doctype html>
@@ -7,11 +38,23 @@ import "../index.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nikhil Yagik | Portfolio</title>
-    <meta
-      name="description"
-      content="Full-stack developer portfolio featuring projects, skills, and contact details."
-    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body class="antialiased">
     <slot />

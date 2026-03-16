@@ -7,9 +7,14 @@ import Skills from "../components/Skills.astro";
 import Projects from "../components/Projects.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
+import Chatbot from "../components/Chatbot.astro";
 ---
 
-<MainLayout>
+<MainLayout
+  title="Nikhil Yagik | Full-Stack Developer & AI/ML Engineer"
+  description="Explore Nikhil Yagik's portfolio featuring full-stack web projects, AI/ML work, technical skills, and contact information for freelance and full-time roles."
+  image="/logo.png"
+>
   <div class="min-h-screen">
     <Navbar />
     <Hero />
@@ -18,5 +23,6 @@ import Footer from "../components/Footer.astro";
     <Projects />
     <Contact />
     <Footer />
+    <Chatbot />
   </div>
 </MainLayout>

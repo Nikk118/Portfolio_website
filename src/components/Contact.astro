@@ -113,7 +113,7 @@
   const submitButton = document.getElementById("contact-submit");
   const status = document.getElementById("contact-status");
 
-  const updateStatus = (message, state) => {
+  const updateStatus = (message:any, state:any) => {
     if (!status) return;
     status.textContent = message;
     status.classList.remove("hidden", "text-red-600", "text-green-600");

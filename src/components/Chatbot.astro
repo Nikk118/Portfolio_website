@@ -1,0 +1,128 @@
+---
+---
+<div id="chat-launcher" onclick="toggleChat()">💬</div>
+
+<div id="chat-window">
+  <div id="messages">
+    <div class="bot">AI: Hi! Ask me anything about my portfolio.</div>
+  </div>
+  <div id="footer">
+    <input id="input" type="text" placeholder="Ask something..." onkeydown="if(event.key==='Enter') send()" />
+    <button onclick="send()">Send</button>
+  </div>
+</div>
+
+<style>
+  #chat-launcher { position:fixed; bottom:24px; right:24px; width:50px; height:50px; border-radius:50%; background:#111; color:white; font-size:22px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:999; }
+  #chat-window { display:none; position:fixed; bottom:84px; right:24px; width:320px; height:420px; background:white; border:1px solid #ddd; border-radius:16px; flex-direction:column; overflow:hidden; z-index:998; }
+  #chat-window.open { display:flex; }
+  #messages { flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px; }
+  .bot { background:#f1f1f1; padding:8px 12px; border-radius:12px; font-size:14px; align-self:flex-start; }
+  .user { background:#111; color:white; padding:8px 12px; border-radius:12px; font-size:14px; align-self:flex-end; }
+  #footer { padding:10px; border-top:1px solid #eee; display:flex; gap:8px; }
+  #input { flex:1; padding:8px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none; }
+  button { padding:8px 14px; background:#111; color:white; border:none; border-radius:8px; cursor:pointer; }
+</style>
+
+<script>
+    const SYSTEM_PROMPT = `You are a portfolio assistant for Nikhil Yagik. Answer questions about him based on the info below. Keep replies short and friendly.
+
+
+Name: Nikhil Yagik
+Location: Umbergaon, Gujarat, India
+Email: nikhilyagik2004@gmail.com
+GitHub: Nikk118 
+LinkedIn: nikhilyagik
+
+Summary: Full-Stack Developer and AI/ML Engineer. Builds responsive web apps and end-to-end AI systems.
+
+Education:
+- MCA 1st Sem (9.7/10) — Indus University, Ahmedabad (2025, pursuing)
+- BCA, CGPA 7.7/10 — VNSGU Rofel College, Vapi (2022–2025)
+
+Full-Stack Skills:
+- Languages: JavaScript, Python, Java, C++
+- Frontend: React.js, Svelte, SvelteKit, Astro, Tailwind CSS
+- Backend: Node.js, Express.js, REST APIs, Firebase Auth, API Rate Limiting
+- Databases: MongoDB, SQL
+- Tools: Git, Docker, Postman, Vercel, Render
+
+AI/ML Skills:
+- ML: Linear/Logistic Regression, KNN, Naive Bayes
+- Deep Learning: CNN, RNN, LSTM, GRU, Transformers
+- NLP: Tokenization, Embeddings, Semantic Search, HuggingFace
+- Computer Vision: OpenCV, MediaPipe
+- Tools: PyTorch, TensorFlow, FAISS, NumPy, Pandas
+
+Projects:
+- SeluraOfficial: Luxury e-commerce (Astro + Svelte + Node.js + PayU + Firebase Auth)
+- Servielliance: Service marketplace (React + Node + MongoDB + JWT)
+- TalkNest: Real-time chat app (React + Socket.IO + MongoDB)
+- GPT from Scratch: 6-layer Transformer in PyTorch, perplexity 2.41
+- Pneumonia Detection: CNN on 5800+ X-rays, 90%+ accuracy
+- RAG PDF Assistant: Local RAG with FAISS + TinyLlama
+
+Available for: freelance and full-time roles`;
+  interface Message {
+    role: 'user' | 'assistant' | 'system';
+    content: string;
+  }
+
+  const KEY = import.meta.env.PUBLIC_GROQ_API_KEY as string;
+  const messages: Message[] = [];
+
+  function toggleChat(): void {
+    document.getElementById('chat-window')?.classList.toggle('open');
+  }
+
+  async function send(): Promise<void> {
+    const input = document.getElementById('input') as HTMLInputElement;
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+
+    const container = document.getElementById('messages') as HTMLDivElement;
+
+    const userDiv = document.createElement('div');
+    userDiv.className = 'user';
+    userDiv.textContent = `You: ${text}`;
+    container.appendChild(userDiv);
+
+    messages.push({ role: 'user', content: text });
+
+    const botDiv = document.createElement('div');
+    botDiv.className = 'bot';
+    botDiv.textContent = 'AI: ...';
+    container.appendChild(botDiv);
+    container.scrollTop = container.scrollHeight;
+
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${KEY}`
+      },
+      body: JSON.stringify({
+        model: 'llama-3.1-8b-instant',
+        max_tokens: 300,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          ...messages
+        ]
+      })
+    });
+
+    const data = await res.json();
+    const reply: string = data.choices[0].message.content;
+    botDiv.textContent = `AI: ${reply}`;
+    messages.push({ role: 'assistant', content: reply });
+    container.scrollTop = container.scrollHeight;
+  }
+
+  (window as any).toggleChat = toggleChat;
+  (window as any).send = send;
+</script>
+
+
+
+
