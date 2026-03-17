@@ -33,7 +33,7 @@
 
     <!-- Subtitle -->
     <p class="text-xl md:text-2xl text-slate-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-      Full-Stack MERN Developer | MCA Student | Building Scalable Web Apps
+      AI/ML Developer | MCA Student | Full-Stack MERN Developer
     </p>
 
     <!-- Social Links -->
@@ -84,24 +84,38 @@
 
       <button
         onclick="scrollToSection('projects')"
-        class="px-8 py-4 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg"
+        class="px-8 py-4 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-50 transition-all hover:scale-105 active:scale-95 shadow-lg border-2 border-slate-200"
       >
         View Projects
       </button>
 
-      <details class="relative">
-        <summary class="list-none cursor-pointer px-8 py-4 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-50 transition-all hover:scale-105 active:scale-95 shadow-lg border-2 border-slate-200 flex items-center gap-2">
-          View Resume
+           <details class="group relative inline-block" id="resume-dropdown">
+        <summary class="list-none cursor-pointer px-8 py-4 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg border-2 border-slate-900 flex items-center gap-2 whitespace-nowrap [&::-webkit-details-marker]:hidden">
+          <span class="whitespace-nowrap">View Resume</span>
+          <span aria-hidden="true" class="inline-block transition-transform duration-200 group-open:rotate-180">&darr;</span>
         </summary>
-        <div class="absolute z-10 mt-2 w-full min-w-[220px] rounded-lg border border-slate-200 bg-white shadow-lg overflow-hidden">
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Full Stack resume PDF" class="block px-4 py-3 text-left text-slate-800 hover:bg-slate-50">
-            resume.pdf
+
+        <div class="resume-menu absolute right-0 top-full z-50 mt-2 w-max min-w-full max-w-[calc(100vw-2rem)] rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden text-left whitespace-nowrap">
+          <a href="/resume_fullstack.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Full Stack Developer resume PDF" class="flex items-center justify-between gap-5 px-4 py-3 text-slate-800 hover:bg-slate-50 transition-colors">
+            <span class="whitespace-nowrap">
+              <span class="block text-lg font-semibold leading-tight whitespace-nowrap">Full Stack Developer</span>
+              <span class="block text-sm text-slate-500 whitespace-nowrap">React | Node | MongoDB</span>
+            </span>
+            <span class="shrink-0 text-sm font-medium text-blue-600 whitespace-nowrap">Open &nearr;</span>
           </a>
-          <a href="/resume_ML.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open AI and ML resume PDF" class="block px-4 py-3 text-left text-slate-800 hover:bg-slate-50">
-            resume_ML.pdf
+
+          <a href="/resume_ML.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open AI / ML Engineer resume PDF" class="flex items-center justify-between gap-5 border-t border-slate-100 px-4 py-3 text-slate-800 hover:bg-slate-50 transition-colors">
+            <span class="whitespace-nowrap">
+              <span class="block text-lg font-semibold leading-tight whitespace-nowrap">AI / ML Engineer</span>
+              <span class="block text-sm text-slate-500 whitespace-nowrap">PyTorch | Transformers | CV</span>
+            </span>
+            <span class="shrink-0 text-sm font-medium text-blue-600 whitespace-nowrap">Open &nearr;</span>
           </a>
         </div>
       </details>
+
+
+
 
       <button
         onclick="scrollToSection('contact')"
@@ -121,11 +135,34 @@
       behavior: "smooth"
     });
   };
+
+  const resumeDropdown = document.getElementById("resume-dropdown");
+
+  document.addEventListener("click", (event) => {
+    if (!resumeDropdown) return;
+    if (!resumeDropdown.contains(event.target)) {
+      resumeDropdown.removeAttribute("open");
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      resumeDropdown?.removeAttribute("open");
+    }
+  });
 </script>
 
 <style>
   .animate-in {
     animation: fade-up 0.6s ease-out;
+  }
+
+  .resume-menu {
+    transform-origin: top right;
+  }
+
+  details[open] .resume-menu {
+    animation: dropdown-fade-slide 180ms ease-out;
   }
 
   @keyframes fade-up {
@@ -138,7 +175,26 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes dropdown-fade-slide {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 </style>
+
+
+
+
+
+
+
+
 
 
 
