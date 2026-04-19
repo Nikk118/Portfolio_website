@@ -1,54 +1,69 @@
-﻿---
-const coreTechSkills = [
-  "React.js",
-  "Node.js",
-  "Express.js",
-  "MongoDB",
-  "SQL",
-  "Tailwind CSS",
-  "HTML",
-  "CSS",
-  "Bootstrap",
-  "Git",
-  "GitHub",
-  "Postman",
-  "VS Code",
-  "JavaScript",
-  "TypeScript",
-  "Python",
-  "Java",
-  "C++",
-  "JWT",
-  "Cloudinary",
-];
-
-const aiMlSkills = [
-  "Machine Learning",
-  "Deep Learning",
-  "Natural Language Processing (NLP)",
-  "Transformers",
-  "Computer Vision",
-  "Embeddings",
-  "Vector Databases",
-  "Semantic Search",
-  "Hugging Face",
-  "FAISS",
-  "OpenCV",
-  "MediaPipe",
-  "Python (AI)",
-];
-
-const conceptSkills = [
-  "OOP",
-  "Data Structures and Algorithms",
-  "REST API Design",
-  "Authentication and Authorization",
-  "Scalable Architecture",
-  "Responsive UI Systems",
-  "Debugging and Testing Mindset",
-  "Agile Workflow",
-  "Clean Code Practices",
-  "Problem Solving",
+---
+const skillSections = [
+  {
+    label: "LANG",
+    labelClass: "bg-slate-900 text-white",
+    title: "Languages",
+    subtitle: "Programming foundations",
+    pillClass: "bg-slate-100 text-slate-800 border-slate-200",
+    skills: ["JavaScript", "TypeScript", "Python", "Java", "C++"],
+  },
+  {
+    label: "WEB",
+    labelClass: "bg-indigo-600 text-white",
+    title: "Frontend",
+    subtitle: "Interfaces and UI systems",
+    pillClass: "bg-indigo-50 text-indigo-800 border-indigo-200",
+    skills: ["React.js", "Svelte", "SvelteKit", "Astro", "Tailwind CSS", "HTML", "CSS", "Bootstrap"],
+  },
+  {
+    label: "API",
+    labelClass: "bg-violet-600 text-white",
+    title: "Backend & APIs",
+    subtitle: "Servers, auth, and services",
+    pillClass: "bg-violet-50 text-violet-800 border-violet-200",
+    skills: ["Node.js", "Express.js", "FastAPI", "REST APIs", "JWT", "Authentication", "Authorization"],
+  },
+  {
+    label: "DATA",
+    labelClass: "bg-amber-500 text-white",
+    title: "Databases & Storage",
+    subtitle: "Persistence and data layers",
+    pillClass: "bg-amber-50 text-amber-800 border-amber-200",
+    skills: ["MongoDB", "PostgreSQL", "SQL", "Astra DB", "Firebase"],
+  },
+  {
+    label: "AI",
+    labelClass: "bg-emerald-600 text-white",
+    title: "AI and ML",
+    subtitle: "Models, retrieval, and agents",
+    pillClass: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    skills: ["ML Algorithms", "Deep Learning", "NLP & Retrieval", "Tools & Libraries"],
+  },
+  {
+    label: "FMW",
+    labelClass: "bg-teal-600 text-white",
+    title: "AI Frameworks",
+    subtitle: "Agent and workflow orchestration",
+    pillClass: "bg-teal-50 text-teal-800 border-teal-200",
+    skills: ["LangChain", "LangGraph", "LangFlow"],
+  },
+  {
+    label: "TOOLS",
+    labelClass: "bg-rose-600 text-white",
+    title: "Tools & Deployment",
+    subtitle: "Workflow and shipping",
+    pillClass: "bg-rose-50 text-rose-800 border-rose-200",
+    skills: ["Git", "GitHub", "Postman", "VS Code", "Docker", "Render", "Vercel", "Cloudinary"],
+  },
+  {
+    label: "SYS",
+    labelClass: "bg-cyan-600 text-white",
+    title: "Concepts & Practices",
+    subtitle: "Engineering thinking",
+    pillClass: "bg-cyan-50 text-cyan-800 border-cyan-200",
+    skills: ["OOP", "Data Structures and Algorithms", "Scalable Architecture", "Debugging and Testing Mindset", "Agile Workflow", "Clean Code Practices", "Problem Solving"],
+  },
 ];
 ---
 
@@ -62,45 +77,27 @@ const conceptSkills = [
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-3 gap-6">
-      <article class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xs font-bold">WEB</div>
-          <div>
-            <h3 class="text-xl font-bold text-slate-900">Core Tech</h3>
-            <p class="text-slate-500 text-sm">Frontend, backend, tools</p>
+    <div class="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+      {skillSections.map((section) => (
+        <article class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3 mb-5">
+            <div class={`w-10 h-10 rounded-xl flex items-center justify-center text-xs font-bold ${section.labelClass}`} aria-hidden="true">
+              {section.label}
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900">{section.title}</h3>
+              <p class="text-slate-500 text-sm">{section.subtitle}</p>
+            </div>
           </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          {coreTechSkills.map((skill) => <span class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-800 text-sm font-medium border border-slate-200">{skill}</span>)}
-        </div>
-      </article>
-
-      <article class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">AI</div>
-          <div>
-            <h3 class="text-xl font-bold text-slate-900">AI and ML Toolkit</h3>
-            <p class="text-slate-500 text-sm">Models, vision, retrieval</p>
+          <div class="flex flex-wrap gap-2">
+            {section.skills.map((skill) => (
+              <span class={`px-3 py-1.5 rounded-lg text-sm font-medium border ${section.pillClass}`}>
+                {skill}
+              </span>
+            ))}
           </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          {aiMlSkills.map((skill) => <span class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 text-sm font-medium border border-emerald-200">{skill}</span>)}
-        </div>
-      </article>
-
-      <article class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs font-bold">SYS</div>
-          <div>
-            <h3 class="text-xl font-bold text-slate-900">Concepts and Practices</h3>
-            <p class="text-slate-500 text-sm">Engineering thinking</p>
-          </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          {conceptSkills.map((skill) => <span class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-800 text-sm font-medium border border-indigo-200">{skill}</span>)}
-        </div>
-      </article>
+        </article>
+      ))}
     </div>
   </div>
 </section>

@@ -39,33 +39,31 @@ const projects = [
     image: talknestImage,
   },
   {
-    title: "GPT Language Model from Scratch",
+    title: "BlogAgent — Agentic Blog Generation Pipeline",
     subtitle: "AI/ML",
     year: "2025",
     description:
-      "Built a 6-layer Transformer-based GPT model from scratch using PyTorch. Implemented multi-head masked self-attention, positional encoding, layer normalization, and feed-forward blocks. Trained on TinyShakespeare dataset (1.1M+ sequences) for next-token prediction and achieved final perplexity of 2.41 with temperature + top-k sampling.",
-    tech: ["PyTorch", "CUDA", "AMP", "Transformer Architecture"],
-    github: "https://github.com/Nikk118/gpt-from-scratch-pytorch",
-    
+      "Built an agentic blog generation system using LangGraph with a multi-node pipeline: routing, research, orchestration, parallel section writing, and reduction. Implemented fanout worker nodes for concurrent section generation and a reducer subgraph for merging, image decision, and placement. Integrated Tavily web research to fetch and normalize real-time evidence for grounded, citation-backed content. Automated technical image generation and insertion into final markdown output via the Google Gemini API. Shipped a Streamlit frontend with multi-chat session history and tabbed output views: Plan, Evidence, Markdown Preview, Images, and Logs.",
+    tech: ["Python", "LangGraph", "Mistral AI", "Tavily", "Streamlit", "Pydantic", "Google Gemini"],
+    github: "https://github.com/Nikk118/blogAgent",
   },
   {
-    title: "Pneumonia Detection using CNN",
-    subtitle: "Medical Imaging",
+    title: "NexChat — Stateful AI Chatbot with Memory",
+    subtitle: "Full-stack AI",
     year: "2025",
     description:
-      "Built a CNN for binary classification of 5,800+ chest X-ray images. Handled severe class imbalance using class weighting. Achieved 90%+ test accuracy and improved recall from 0.90 to 0.96 via threshold tuning, then evaluated with confusion matrix for medical-risk aware optimization.",
-    tech: ["TensorFlow", "Keras", "OpenCV", "Data Augmentation"],
-    github: "https://github.com/Nikk118/pneumonia-detection",
-    
+      "Built a full-stack AI chatbot with persistent memory backed by LangGraph + PostgreSQL. Implemented a multi-conversation chat system with automatic history management and title generation. Designed a modular FastAPI backend and integrated streaming LLM responses. Wired up tool-calling agents (calculator, web search, weather) and PDF RAG via FAISS for in-chat document Q&A. Enabled stateful conversation flow with per-session memory retrieval across sessions.",
+    tech: ["FastAPI", "LangGraph", "PostgreSQL", "Mistral Ai", "Streamlit", "FAISS", "Pydantic"],
+    github: "https://github.com/Nikk118/nexchat",
   },
   {
-    title: "Local RAG-based PDF Assistant",
-    subtitle: "CLI Tool",
+    title: "TimeCapsule — AI Memory & Scheduling Assistant",
+    subtitle: "Full-stack App",
     year: "2025",
     description:
-      "Built a fully local Retrieval-Augmented Generation (RAG) system for PDF Q&A. Generated embeddings using MiniLM and stored vectors in FAISS. Implemented chunking with overlap and top-k semantic retrieval, then integrated TinyLlama for context-aware answer generation with a CLI interface.",
-    tech: ["Python", "Sentence-Transformers", "FAISS", "Transformers"],
-    github: "https://github.com/Nikk118/pdf-rag-system",
+      "Developed a full-stack app for timestamped digital capsules — users store messages and schedule future reminders via natural language. Built a LangChain-based AI agent to store, retrieve, and reason over capsule data (e.g 'how many capsules do I have?', 'remind me next Monday'). Implemented scalable REST APIs and client-side state management with Zustand.",
+    tech: ["React", "Node.js", "MongoDB", "LangChain", "HuggingFace (Llama 3.1)", "Zustand"],
+    github: "https://github.com/Nikk118/timecapsule",
   },
 ];
 
@@ -74,31 +72,31 @@ const webProjects = projects.filter((project) => webProjectTitles.includes(proje
 const aiMlProjects = projects.filter((project) => !webProjectTitles.includes(project.title));
 
 const aiMlMeta = {
-  "GPT Language Model from Scratch": {
-    icon: "🤖",
-    iconBg: "bg-emerald-100 text-emerald-700",
+  "BlogAgent — Agentic Blog Generation Pipeline": {
+    icon: "📝",
+    iconBg: "bg-amber-100 text-amber-700",
     stats: [
-      { value: "2.41", label: "Perplexity" },
-      { value: "1.1M+", label: "Sequences" },
-      { value: "6", label: "Layers" },
+      { value: "LangGraph", label: "Pipeline" },
+      { value: "5+", label: "Nodes" },
+      { value: "Gemini", label: "Images" },
     ],
   },
-  "Pneumonia Detection using CNN": {
-    icon: "🔬",
+  "NexChat — Stateful AI Chatbot with Memory": {
+    icon: "💬",
+    iconBg: "bg-purple-100 text-purple-700",
+    stats: [
+      { value: "PostgreSQL", label: "Persistence" },
+      { value: "Streaming", label: "Responses" },
+      { value: "Multi-tool", label: "Agents" },
+    ],
+  },
+  "TimeCapsule — AI Memory & Scheduling Assistant": {
+    icon: "⏰",
     iconBg: "bg-rose-100 text-rose-700",
     stats: [
-      { value: "90%+", label: "Accuracy" },
-      { value: "5,800+", label: "Images" },
-      { value: "0.96", label: "Recall" },
-    ],
-  },
-  "Local RAG-based PDF Assistant": {
-    icon: "💬",
-    iconBg: "bg-sky-100 text-sky-700",
-    stats: [
-      { value: "100%", label: "Local" },
-      { value: "FAISS", label: "Vector Store" },
-      { value: "top-k", label: "Retrieval" },
+      { value: "NLP", label: "Scheduling" },
+      { value: "MongoDB", label: "Storage" },
+      { value: "Zustand", label: "State" },
     ],
   },
 };
