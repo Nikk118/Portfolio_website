@@ -1,5 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 const pageTitle = "Freelance MERN Developer Ahmedabad | Nikhil";
 const pageDescription = "Freelance full stack and AI developer in Ahmedabad. Build MERN platforms, agentic AI systems, and scalable digital products for business growth.";
@@ -20,6 +22,7 @@ const serviceSchema = {
 ---
 
 <MainLayout title={pageTitle} description={pageDescription} keywords={pageKeywords} image="/logo.png">
+  <Navbar />
   <main class="bg-white min-h-screen pt-28 pb-20 px-4">
     <article class="max-w-4xl mx-auto">
       <p class="text-sm font-medium tracking-wide text-slate-500 uppercase mb-4">Ahmedabad Product Engineering</p>
@@ -138,11 +141,12 @@ const serviceSchema = {
         <div class="flex flex-wrap gap-4">
           <a href="/#contact" class="px-6 py-3 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition-colors">Hire Me</a>
           <a href="/#projects" class="px-6 py-3 rounded-lg bg-white border border-slate-300 text-slate-900 font-medium hover:bg-slate-100 transition-colors">View Work</a>
-          <a href="/ai-developer-umbergaon" class="px-6 py-3 rounded-lg bg-white border border-slate-300 text-slate-900 font-medium hover:bg-slate-100 transition-colors">Umbergaon AI Page</a>
+          <a href="/ai-developer-umbergaon" class="px-6 py-3 rounded-lg bg-white border border-slate-300 text-slate-900 font-medium hover:bg-slate-100 transition-colors">Umbergaon Page</a>
         </div>
       </div>
     </article>
   </main>
 
+  <Footer />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 </MainLayout>

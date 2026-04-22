@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
 const pageTitle = "AI Developer in Umbergaon | Nikhil Yagik";
 const pageDescription = "Hire an AI developer in Umbergaon for LangGraph workflows, RAG apps, LLM automation, and full stack product integration across Gujarat.";
 const pageKeywords = "AI developer in Umbergaon, agentic AI developer Gujarat, LangGraph developer India, RAG developer Umbergaon, AI automation Gujarat";
@@ -20,6 +21,7 @@ const serviceSchema = {
 ---
 
 <MainLayout title={pageTitle} description={pageDescription} keywords={pageKeywords} image="/logo.png">
+  <Navbar />
   <main class="bg-white min-h-screen pt-28 pb-20 px-4">
     <article class="max-w-4xl mx-auto">
       <p class="text-sm font-medium tracking-wide text-slate-500 uppercase mb-4">Umbergaon AI Engineering Services</p>
@@ -166,5 +168,6 @@ const serviceSchema = {
     </article>
   </main>
 
+  <Footer />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 </MainLayout>

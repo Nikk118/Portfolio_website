@@ -1,5 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 const pageTitle = "Full Stack & AI Developer in Vapi | Nikhil";
 const pageDescription = "Hire a freelance full stack and AI developer in Vapi. MERN apps, agentic AI systems, and practical automation for business growth.";
@@ -20,6 +22,7 @@ const serviceSchema = {
 ---
 
 <MainLayout title={pageTitle} description={pageDescription} keywords={pageKeywords} image="/logo.png">
+  <Navbar />
   <main class="bg-white min-h-screen pt-28 pb-20 px-4">
     <article class="max-w-4xl mx-auto">
       <p class="text-sm font-medium tracking-wide text-slate-500 uppercase mb-4">Vapi Gujarat Freelance Services</p>
@@ -150,5 +153,6 @@ const serviceSchema = {
     </article>
   </main>
 
+  <Footer />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 </MainLayout>
