@@ -86,7 +86,9 @@ const navItems = [
   const scrollToSection = (id: string): void => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      const navbarHeight = navbar ? navbar.getBoundingClientRect().height + 12 : 88;
+      const top = section.getBoundingClientRect().top + window.scrollY - navbarHeight;
+      window.scrollTo({ top, behavior: "smooth" });
     }
     closeMenu();
   };

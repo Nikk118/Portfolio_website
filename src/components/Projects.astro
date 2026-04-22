@@ -4,13 +4,17 @@ import seluraImage from "../assets/selura.png";
 import serviellianceImage from "../assets/image.png";
 import talknestImage from "../assets/image1.png";
 
+const whatsappLink = "https://wa.me/919601330716?text=Hi%20Nikhil%2C%20I%20want%20to%20build%20a%20project%20with%20you.";
+
 const projects = [
   {
     title: "Selura (Freelance)",
     subtitle: "E-commerce Platform",
     year: "2025",
     description:
-      "Full-stack e-commerce platform developed as a freelance project. Includes secure authentication, product management, cart and checkout flow, address handling, and Razorpay payment integration with a modern responsive UI.",
+      "I can build e-commerce platforms like this for your business with secure checkout, order lifecycle management, and a conversion-focused shopping experience that scales.",
+    whatICanDo:
+      "Launch a custom online store with product management, payment integration, and admin workflows tailored to your operations.",
     tech: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "MongoDB", "JWT", "Razorpay"],
     liveDemo: "https://seluraofficial.in/",
     github: "Private repository (Client project)",
@@ -21,7 +25,9 @@ const projects = [
     subtitle: "UrbanClap Clone",
     year: "2025",
     description:
-      "Service marketplace platform enabling users to book professionals in real time. Implemented role-based access, booking lifecycle management, notifications, and image uploads with a scalable backend architecture.",
+      "I can build service marketplace platforms like this to help your business manage bookings, providers, and customer flows with clarity and speed.",
+    whatICanDo:
+      "Create a complete booking ecosystem with role-based dashboards, notifications, and scalable backend workflows.",
     tech: ["React", "Vite", "Tailwind", "Zustand", "JWT", "Cloudinary", "Multer", "Nodemailer"],
     liveDemo: "https://servielliance.onrender.com",
     github: "https://github.com/Nikk118/Servilanc",
@@ -32,7 +38,9 @@ const projects = [
     subtitle: "Chat App",
     year: "2024",
     description:
-      "Real-time chat application supporting instant messaging and user authentication. Built using Socket.IO with message persistence and a responsive UI optimized for smooth real-time interactions.",
+      "I can build real-time chat applications like this for your business with secure messaging, responsive UX, and reliable performance for active users.",
+    whatICanDo:
+      "Develop customer chat, support chat, or internal communication tools with modern UI and stable real-time architecture.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Socket.IO", "Tailwind CSS"],
     liveDemo: "https://chatapp-xn9n.onrender.com",
     github: "https://github.com/Nikk118/chatApp",
@@ -43,7 +51,9 @@ const projects = [
     subtitle: "AI/ML",
     year: "2025",
     description:
-      "Built an agentic blog generation system using LangGraph with a multi-node pipeline: routing, research, orchestration, parallel section writing, and reduction. Implemented fanout worker nodes for concurrent section generation and a reducer subgraph for merging, image decision, and placement. Integrated Tavily web research to fetch and normalize real-time evidence for grounded, citation-backed content. Automated technical image generation and insertion into final markdown output via the Google Gemini API. Shipped a Streamlit frontend with multi-chat session history and tabbed output views: Plan, Evidence, Markdown Preview, Images, and Logs.",
+      "I can build agentic AI systems like this to automate research and content workflows with structured planning, retrieval, and multi-step execution.",
+    whatICanDo:
+      "Design custom AI pipelines that reduce manual effort for content, operations, and reporting while keeping output quality controlled.",
     tech: ["Python", "LangGraph", "Mistral AI", "Tavily", "Streamlit", "Pydantic", "Google Gemini"],
     github: "https://github.com/Nikk118/blogAgent",
   },
@@ -52,7 +62,9 @@ const projects = [
     subtitle: "Full-stack AI",
     year: "2025",
     description:
-      "Built a full-stack AI chatbot with persistent memory backed by LangGraph + PostgreSQL. Implemented a multi-conversation chat system with automatic history management and title generation. Designed a modular FastAPI backend and integrated streaming LLM responses. Wired up tool-calling agents (calculator, web search, weather) and PDF RAG via FAISS for in-chat document Q&A. Enabled stateful conversation flow with per-session memory retrieval across sessions.",
+      "I can build AI chat systems like this that remember context, connect to your data, and handle real business tasks beyond basic chatbot replies.",
+    whatICanDo:
+      "Launch an AI assistant for support, sales, or internal teams with memory, tool-calling, and document-based answers.",
     tech: ["FastAPI", "LangGraph", "PostgreSQL", "Mistral Ai", "Streamlit", "FAISS", "Pydantic"],
     github: "https://github.com/Nikk118/nexchat",
   },
@@ -61,7 +73,9 @@ const projects = [
     subtitle: "Full-stack App",
     year: "2025",
     description:
-      "Developed a full-stack app for timestamped digital capsules — users store messages and schedule future reminders via natural language. Built a LangChain-based AI agent to store, retrieve, and reason over capsule data (e.g 'how many capsules do I have?', 'remind me next Monday'). Implemented scalable REST APIs and client-side state management with Zustand.",
+      "I can build AI-enabled productivity apps like this to help your users store information, trigger reminders, and automate repetitive scheduling tasks.",
+    whatICanDo:
+      "Create intelligent workflow apps that combine clean UX with AI-driven actions tailored to your business process.",
     tech: ["React", "Node.js", "MongoDB", "LangChain", "HuggingFace (Llama 3.1)", "Zustand"],
     github: "https://github.com/Nikk118/timecapsule",
   },
@@ -71,7 +85,7 @@ const webProjectTitles = ["Selura (Freelance)", "Servielliance", "TalkNest"];
 const webProjects = projects.filter((project) => webProjectTitles.includes(project.title));
 const aiMlProjects = projects.filter((project) => !webProjectTitles.includes(project.title));
 
-const aiMlMeta = {
+const aiMlMeta: Record<string, { icon: string; iconBg: string; stats: Array<{ value: string; label: string }> }> = {
   "BlogAgent — Agentic Blog Generation Pipeline": {
     icon: "📝",
     iconBg: "bg-amber-100 text-amber-700",
@@ -105,10 +119,10 @@ const aiMlMeta = {
 <section id="projects" class="py-20 px-4 bg-white">
   <div class="max-w-6xl mx-auto">
     <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 text-center">
-      Featured Projects
+      Solutions I Can Build for Your Business
     </h2>
     <p class="text-slate-600 text-center mb-10 max-w-2xl mx-auto">
-      Full-stack web apps and AI/ML systems built from scratch
+      Real delivery examples re-framed as services you can hire me to build for your team.
     </p>
 
     <div class="flex justify-center mb-10">
@@ -148,7 +162,7 @@ const aiMlMeta = {
               <div class="grid md:grid-cols-2 gap-0">
                 <div class="relative h-64 md:h-full overflow-hidden">
                   <Image
-                    src={project.image}
+                    src={project.image!}
                     alt={project.title}
                     class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                     loading="lazy"
@@ -169,9 +183,33 @@ const aiMlMeta = {
                     <div class="flex flex-wrap gap-2 mb-6">
                       {project.tech.map((tech) => <span class="px-3 py-1 bg-white text-slate-700 rounded-full text-sm font-medium shadow-sm">{tech}</span>)}
                     </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 mb-6">
+                      <p class="text-sm font-semibold text-slate-900 mb-1">What I can do for you</p>
+                      <p class="text-slate-700 leading-relaxed">{project.whatICanDo}</p>
+                    </div>
                   </div>
 
-                  <div class="flex gap-4">
+                  <div class="flex flex-wrap gap-3 mb-3">
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors"
+                    >
+                      Build Something Similar
+                    </a>
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors border-2 border-slate-200"
+                    >
+                      Hire Me for This
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-3">
                     <a
                       href={project.liveDemo}
                       target="_blank"
@@ -236,6 +274,30 @@ const aiMlMeta = {
                   {project.tech.map((tech) => <span class="px-3 py-1 bg-white text-slate-700 rounded-full text-sm font-medium shadow-sm">{tech}</span>)}
                 </div>
 
+                <div class="bg-white border border-slate-200 rounded-xl p-4 mb-6">
+                  <p class="text-sm font-semibold text-slate-900 mb-1">What I can do for you</p>
+                  <p class="text-slate-700 leading-relaxed">{project.whatICanDo}</p>
+                </div>
+
+                <div class="flex flex-wrap gap-3 mb-4">
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors"
+                  >
+                    Build Something Similar
+                  </a>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors border-2 border-slate-200"
+                  >
+                    Hire Me for This
+                  </a>
+                </div>
+
                 {project.github.startsWith("http") && (
                   <a
                     href={project.github}
@@ -252,19 +314,30 @@ const aiMlMeta = {
         }
       </div>
     </div>
+
+    <div class="mt-12 rounded-2xl bg-slate-900 text-white p-8 text-center">
+      <h3 class="text-2xl font-bold mb-3">Want a solution like these for your business?</h3>
+      <p class="text-slate-200 mb-6 max-w-3xl mx-auto">
+        Tell me your goal and timeline. I will recommend the fastest practical approach and build it with you.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-white text-slate-900 font-semibold hover:bg-slate-100 transition-colors">Let's build your project</a>
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg border border-slate-400 text-white font-semibold hover:bg-slate-800 transition-colors">Get a free consultation</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <script>
-  const tabButtons = Array.from(document.querySelectorAll(".project-tab-btn"));
-  const panels = {
+  const tabButtons = Array.from(document.querySelectorAll(".project-tab-btn")) as HTMLButtonElement[];
+  const panels: Record<"web" | "ai", HTMLElement | null> = {
     web: document.getElementById("panel-web"),
     ai: document.getElementById("panel-ai"),
   };
 
-  let activeTab = "web";
+  let activeTab: "web" | "ai" = "web";
 
-  const setTabState = (tab) => {
+  const setTabState = (tab: "web" | "ai") => {
     if (tab === activeTab) return;
 
     tabButtons.forEach((button) => {

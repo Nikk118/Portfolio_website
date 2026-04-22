@@ -2,6 +2,9 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
+import WhatICanBuildForYou from "../components/WhatICanBuildForYou.astro";
+import ServicesOffer from "../components/ServicesOffer.astro";
+import LocalServiceAreas from "../components/LocalServiceAreas.astro";
 import About from "../components/About.astro";
 import Skills from "../components/Skills.astro";
 import Projects from "../components/Projects.astro";
@@ -11,16 +14,20 @@ import Chatbot from "../components/Chatbot.astro";
 ---
 
 <MainLayout
-  title="Nikhil Yagik | Full-Stack Developer & AI/ML Engineer"
-  description="Explore Nikhil Yagik's portfolio featuring full-stack web projects, AI/ML work, technical skills, and contact information for freelance and full-time roles."
+  title="AI & Full Stack Developer in Gujarat | Nikhil Yagik"
+  description="Freelance AI and full stack developer serving Umbergaon, Vapi, Valsad, and Ahmedabad. Build MERN apps, agentic AI systems, and production-ready automations."
+  keywords="AI developer in Gujarat, full stack developer in Vapi, MERN developer Ahmedabad, agentic AI developer Umbergaon, freelance developer Valsad, LangGraph developer India"
   image="/logo.png"
 >
   <div class="min-h-screen">
     <Navbar />
     <Hero />
+    <WhatICanBuildForYou />
+    <ServicesOffer />
+    <LocalServiceAreas />
+    <Projects />
     <About />
     <Skills />
-    <Projects />
     <Contact />
     <Footer />
     <Chatbot />

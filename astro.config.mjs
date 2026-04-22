@@ -2,7 +2,7 @@
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://nikhil-yagik.netlify.app",
+  site: "https://nikhilyagik.dev",
   integrations: [tailwind()],
   vite: {
     optimizeDeps: {

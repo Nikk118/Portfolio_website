@@ -1,0 +1,60 @@
+---
+const services = [
+  {
+    title: "Full Stack Development",
+    description: "I build complete web products from frontend to backend with fast, stable delivery.",
+    value: "You get one accountable partner instead of juggling multiple freelancers.",
+    cta: "Hire me for this solution"
+  },
+  {
+    title: "AI/ML and Agentic Systems",
+    description: "I create AI workflows, copilots, and intelligent features using LangGraph, RAG, and LLM tools.",
+    value: "Automate repetitive work and deliver smarter user experiences with measurable outcomes.",
+    cta: "Start your AI project"
+  },
+  {
+    title: "Custom SaaS Development",
+    description: "I turn ideas into scalable SaaS platforms with onboarding, authentication, and business workflows.",
+    value: "Ship faster and validate your market with a product designed for growth.",
+    cta: "Build your SaaS"
+  },
+  {
+    title: "API and Backend Systems",
+    description: "I design robust backend architecture, secure APIs, and integrations that keep your product reliable.",
+    value: "Improve performance, reduce downtime, and make future feature launches easier.",
+    cta: "Upgrade my backend"
+  }
+];
+
+const whatsappLink = "https://wa.me/919601330716?text=Hi%20Nikhil%2C%20I%20want%20to%20build%20a%20project%20with%20you.";
+---
+
+<section id="services-offer" class="py-20 px-4 bg-gradient-to-br from-slate-50 via-white to-slate-100">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-xs font-semibold tracking-[0.22em] text-slate-500 uppercase mb-3">Service Focus</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Services I Offer</h2>
+      <p class="text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        Every service is designed around business impact: faster delivery, better reliability, and stronger conversion.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {services.map((service) => (
+        <article class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-all duration-300">
+          <h3 class="text-2xl font-bold text-slate-900 mb-3">{service.title}</h3>
+          <p class="text-slate-700 leading-relaxed mb-3">{service.description}</p>
+          <p class="text-slate-600 leading-relaxed mb-5">{service.value}</p>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition-colors">
+            {service.cta}
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 flex flex-wrap justify-center gap-3">
+      <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-slate-900 text-white font-semibold hover:bg-slate-800 transition-colors">Let's build your project</a>
+      <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-white border border-slate-300 text-slate-900 font-semibold hover:bg-slate-100 transition-colors">Get a free consultation</a>
+    </div>
+  </div>
+</section>

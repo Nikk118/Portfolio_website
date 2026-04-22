@@ -1,0 +1,66 @@
+---
+const solutions = [
+  {
+    title: "SaaS Applications",
+    description: "Subscription-ready products with onboarding, billing, and role-based dashboards.",
+    value: "Launch faster and start converting users with a product built for scale.",
+    cta: "Build my SaaS"
+  },
+  {
+    title: "AI Chatbots and Agents",
+    description: "Custom AI assistants with LangGraph workflows, memory, and business-specific actions.",
+    value: "Reduce repetitive manual work and respond to users faster with reliable automation.",
+    cta: "Start my AI project"
+  },
+  {
+    title: "E-commerce Platforms",
+    description: "Modern storefronts with secure checkout, order flows, and conversion-focused UX.",
+    value: "Increase sales with smoother buying journeys and better operational control.",
+    cta: "Launch my store"
+  },
+  {
+    title: "Internal Tools and Dashboards",
+    description: "Operational systems for analytics, approvals, team workflows, and reporting.",
+    value: "Give your team one source of truth and save hours every week.",
+    cta: "Build my dashboard"
+  }
+];
+
+const whatsappLink = "https://wa.me/919601330716?text=Hi%20Nikhil%2C%20I%20want%20to%20build%20a%20project%20with%20you.";
+---
+
+<section id="what-i-build" class="py-20 px-4 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-xs font-semibold tracking-[0.22em] text-slate-500 uppercase mb-3">Solutions</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">What I Can Build For You</h2>
+      <p class="text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        I design and ship production-ready systems that solve real business problems, not just demo features.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 overflow-x-hidden">
+      {solutions.map((solution) => (
+        <article class="rounded-2xl border border-slate-200 bg-slate-50 p-6 hover:bg-white hover:shadow-md transition-all duration-300">
+          <h3 class="text-2xl font-bold text-slate-900 mb-3">{solution.title}</h3>
+          <p class="text-slate-700 leading-relaxed mb-3">{solution.description}</p>
+          <p class="text-slate-600 leading-relaxed mb-5">{solution.value}</p>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition-colors">
+            {solution.cta}
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-6 rounded-2xl bg-slate-900 text-white p-8 text-center">
+      <h3 class="text-2xl font-bold mb-3">Need one reliable technical partner?</h3>
+      <p class="text-slate-200 mb-6 max-w-3xl mx-auto">
+        I can help you plan, build, and launch your next product with a clear execution roadmap.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-white text-slate-900 font-semibold hover:bg-slate-100 transition-colors">Start your project today</a>
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg border border-slate-400 text-white font-semibold hover:bg-slate-800 transition-colors">Get a free consultation</a>
+      </div>
+    </div>
+  </div>
+</section>

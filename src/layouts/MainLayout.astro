@@ -5,6 +5,7 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  keywords?: string;
   noindex?: boolean;
 }
 
@@ -12,6 +13,7 @@ const {
   title = "Nikhil Yagik | Full-Stack Developer & AI/ML Engineer",
   description = "Portfolio of Nikhil Yagik, a Full-Stack MERN Developer and AI/ML Engineer from Gujarat, India. Building modern web apps and practical AI systems.",
   image = "/logo.webp",
+  keywords = "Nikhil Yagik, Full Stack Developer, MERN Developer, AI ML Engineer, React Developer India, Node.js Developer Gujarat, Python Developer, Web Developer Umbergaon, PyTorch Developer, GPT from Scratch, Transformer Model PyTorch, CNN Medical Imaging TensorFlow, Pneumonia Detection Deep Learning, RAG System FAISS Python, HuggingFace Developer India, Deep Learning Engineer Gujarat, MCA Student Developer India, Local RAG PDF Assistant, TinyLlama, Sentence Transformers, AI ML Engineer India, Computer Vision OpenCV",
   noindex = false
 } = Astro.props;
 
@@ -66,7 +68,7 @@ const personSchema = {
     <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Nikhil Yagik, Full Stack Developer, MERN Developer, AI ML Engineer, React Developer India, Node.js Developer Gujarat, Python Developer, Web Developer Umbergaon, PyTorch Developer, GPT from Scratch, Transformer Model PyTorch, CNN Medical Imaging TensorFlow, Pneumonia Detection Deep Learning, RAG System FAISS Python, HuggingFace Developer India, Deep Learning Engineer Gujarat, MCA Student Developer India, Local RAG PDF Assistant, TinyLlama, Sentence Transformers, AI ML Engineer India, Computer Vision OpenCV" />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content="Nikhil Yagik" />
     <meta name="robots" content={robots} />
     <meta name="theme-color" content="#000000" />
